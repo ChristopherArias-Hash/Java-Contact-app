@@ -1,0 +1,30 @@
+input, button, label {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+
+}
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(20,100px); /* Set each row to 50px */
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: start;
+  height: 100vh;
+  
+}
+
+
+body {
+  background-color:   #EDF2F4;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin:0;
+
+}
+
+
+
+

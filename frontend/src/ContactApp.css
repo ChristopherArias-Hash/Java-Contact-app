@@ -1,0 +1,101 @@
+
+
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color:  #EDF2F4;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+ 
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .submitButton {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+.center-top-text {
+  text-align: center;
+}
+
+
+.submitButton {
+  background-color: #EDF2F4;
+  border: 2px solid #2B2D42;
+  border-radius: 30px;
+  box-shadow: #2B2D42 4px 4px 0 0;
+  color: #2B2D42;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 0 15px;
+  line-height: 25px;
+  width: 200px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  
+ 
+  
+}
+
+.submitButton:active {
+  box-shadow: #2B2D42 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+.centered-contact {
+  color: #2B2D42;
+  justify-self: left;
+  grid-row: 2 / span 100; /* start from row 4 and span enough rows to accommodate expansion */
+  grid-column: 2 /2; /* expand horizontally based on content */
+  background-color: #8D99AE;
+  border: 10px solid #2B2D42;;
+  padding-left: 15px;
+  margin-top: 50px;
+
+}
+.UDbuttons{
+  background-color: #EDF2F4;
+  border: 2px solid #2B2D42;
+  border-radius: 30px;
+  box-shadow: #2B2D42 4px 4px 0 0;
+  color: #2B2D42;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 0 15px;
+  line-height: 25px;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+
