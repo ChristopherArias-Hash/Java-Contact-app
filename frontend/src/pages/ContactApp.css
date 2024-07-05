@@ -70,14 +70,30 @@
 .centered-contact {
   color: #2B2D42;
   justify-self: left;
-  grid-row: 2 / span 100; /* start from row 4 and span enough rows to accommodate expansion */
+  grid-row: 2 / 10; /* start from row 4 and span enough rows to accommodate expansion */
   grid-column: 2 /2; /* expand horizontally based on content */
   background-color: #8D99AE;
   border: 10px solid #2B2D42;;
   padding-left: 15px;
   margin-top: 50px;
+  overflow-y: auto;
 
 }
+  /* Optional: Style the scroll bar */
+.centered-contact::-webkit-scrollbar {
+  width: 10px;
+}
+
+.centered-contact::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.centered-contact::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+
 .UDbuttons{
   background-color: #EDF2F4;
   border: 2px solid #2B2D42;
@@ -99,3 +115,19 @@
 }
 
 
+.contact-name-buttons{
+  margin-right:50px;
+  background-color: #EDF2F4;
+  border: 2px solid #2B2D42;
+  height: 50px;
+  width: 300px;
+  max-width: 300px;
+  font-size: 13px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.contact-name-buttons:active {
+  box-shadow: #2B2D42 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}

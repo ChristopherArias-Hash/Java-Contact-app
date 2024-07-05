@@ -12,6 +12,8 @@ input, button, label {
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: start;
   height: 100vh;
+  overflow: hidden; /* Prevent scrolling of the entire page */
+
   
 }
 

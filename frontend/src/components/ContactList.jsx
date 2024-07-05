@@ -1,6 +1,6 @@
 import React from "react";
 
-const ContactList = ({ contacts, updateContact, updateCallback }) => {
+const ContactList = ({ contacts,  updateCallback }) => {
     // Function to delete a contact
     const onDelete = async (id) => {
         try {
@@ -26,34 +26,26 @@ const ContactList = ({ contacts, updateContact, updateCallback }) => {
             <h2 className="center-top-text">Leave your contact info!</h2>
             <h2>Contacts</h2>
             <table>
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
                     {contacts.map((contact) => (
                         <tr key={contact.id}>
-                            <td>{contact.firstName}</td>
-                            <td>{contact.lastName}</td>
-                            <td>{contact.email}</td>
+                            <button className="contact-name-buttons">
                             <td>
-                               
-                                {/* Button to update a contact */}
-                                <button className="UDbuttons" onClick={() => updateContact(contact)}>Update</button>
-                                {/* Button to delete a contact */}
-                                <button  className="UDbuttons" onClick={() => onDelete(contact.id)}>Delete</button>
-                               
+                                {contact.firstName}
+                            </td>
+                            <td>
+                                {contact.lastName}
+                            </td>
+                            </button>
+                            <td>
                             </td>
                         </tr>
                     ))}
-                </tbody>
+             
             </table>
         </div>
     );
 };
+
+ 
 
 export default ContactList;
