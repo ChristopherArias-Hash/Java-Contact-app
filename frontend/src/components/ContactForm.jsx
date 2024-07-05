@@ -24,10 +24,10 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
     try {
       if (updating) {
         // Update an existing contact
-        await axios.put(`http://localhost:8080/users/${existingContact.id}`, data);
+        await axios.put(`http://localhost:8080/contacts/${existingContact.id}`, data);
       } else {
         // Create a new contact
-        await axios.post("http://localhost:8080/user", data);
+        await axios.post("http://localhost:8080/contact", data);
       }
       // Trigger the update callback to refresh the contacts list
       updateCallback();

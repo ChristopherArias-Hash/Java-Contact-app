@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ContactList from "./components/ContactList";
-import ContactForm from "./components/ContactForm";
+import ContactList from "../components/ContactList";
+import ContactForm from "../components/ContactForm";
 import "./ContactApp.css";
 
 function ContactApp() {
@@ -16,7 +16,7 @@ function ContactApp() {
 
   // Fetch contacts data from the server
   const loadContacts = async () => {
-    const result = await axios.get("http://localhost:8080/users");
+    const result = await axios.get("http://localhost:8080/contacts");
     setContacts(result.data);
   };
 
