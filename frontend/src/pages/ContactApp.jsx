@@ -5,6 +5,7 @@ import ContactForm from "../components/ContactForm";
 import "./ContactApp.css";
 
 function ContactApp() {
+  const [query, setQuery] = useState("");
   const [contacts, setContacts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentContact, setCurrentContact] = useState({});
@@ -18,6 +19,17 @@ function ContactApp() {
   const loadContacts = async () => {
     const result = await axios.get("http://localhost:8080/contacts");
     setContacts(result.data);
+  };
+
+  // Filter contacts based on the search query
+  const getFilteredItems = (query, contacts) => {
+    if (!query) {
+      return contacts;
+    }
+    return contacts.filter(contact => 
+      contact.firstName.toLowerCase().includes(query.toLowerCase()) ||
+      contact.lastName.toLowerCase().includes(query.toLowerCase())
+    );
   };
 
   // Close the modal and reset currentContact state
@@ -44,12 +56,19 @@ function ContactApp() {
     loadContacts();
   };
 
+  const filteredContacts = getFilteredItems(query, contacts);
+
   return (
     <>
       <div className="container">
         <div className="centered-contact">
           {/* ContactList component to display the list of contacts */}
-          <ContactList contacts={contacts} updateContact={openEditModal} updateCallback={onUpdate} />
+          <ContactList 
+            contacts={filteredContacts} 
+            updateContact={openEditModal} 
+            updateCallback={onUpdate} 
+            setQuery={setQuery}
+          />
           {/* Button to open the modal for creating a new contact */}
           <button className="submitButton" onClick={openCreateModal}>Create New Contact</button>
         </div>
