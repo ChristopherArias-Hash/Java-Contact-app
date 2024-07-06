@@ -6,6 +6,8 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
   const [firstName, setFirstName] = useState(existingContact.firstName || "");
   const [lastName, setLastName] = useState(existingContact.lastName || "");
   const [email, setEmail] = useState(existingContact.email || "");
+  const [notes, setNotes] = useState(existingContact.notes || "");
+  const [imageUrl, setImageUrl] = useState(existingContact.imageUrl || "");
 
   // Check if the form is used for updating an existing contact
   const updating = Object.entries(existingContact).length !== 0;
@@ -18,7 +20,9 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
     const data = {
       firstName,
       lastName,
-      email
+      email,
+      notes,
+      imageUrl
     };
 
     try {
@@ -70,6 +74,24 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
           id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="notes">Notes:</label>
+        <input
+          type="notes"
+          id="notes"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="imageUrl">Upload Image:</label>
+        <input
+          type="imageUrl"
+          id="imageUrl"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
         />
       </div>
       <button type="submit">{updating ? "Update" : "Create"}</button>

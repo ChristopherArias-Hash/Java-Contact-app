@@ -38,6 +38,8 @@ public class ContactController {
                     contact.setFirstName(newContact.getFirstName());
                     contact.setLastName(newContact.getLastName());
                     contact.setEmail(newContact.getEmail());
+                    contact.setNotes(newContact.getNotes());
+                    contact.setImageUrl(newContact.getImageUrl());
                     return contactRepository.save(contact);
                 }).orElseThrow(() -> new ContactNotFoundException(id));
     }

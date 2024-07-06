@@ -13,6 +13,8 @@ public class Contact {
     private String firstName;
     private String lastName;
     private String email;
+    private String notes;
+    private String imageUrl;
 
     public Long getId() {
         return id;
@@ -45,4 +47,21 @@ public class Contact {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
+
