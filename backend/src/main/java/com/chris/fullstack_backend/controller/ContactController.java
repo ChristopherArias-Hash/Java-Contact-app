@@ -15,6 +15,7 @@ public class ContactController {
     @Autowired
     private ContactRepository contactRepository;
 
+
     @PostMapping("/contact")
     Contact newContact(@RequestBody Contact newContact) {
         return contactRepository.save(newContact);

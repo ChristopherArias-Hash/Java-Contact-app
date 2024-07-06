@@ -64,4 +64,3 @@ public class Contact {
         this.imageUrl = imageUrl;
     }
 }
-

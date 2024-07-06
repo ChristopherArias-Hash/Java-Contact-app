@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const ContactForm = ({ existingContact = {}, updateCallback }) => {
+const ContactForm = ({ existingContact = {}, updateCallback}) => {
   // State variables for form inputs
   const [firstName, setFirstName] = useState(existingContact.firstName || "");
   const [lastName, setLastName] = useState(existingContact.lastName || "");
@@ -76,9 +76,10 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div>
-        <label htmlFor="notes">Notes:</label>
+      <div >
+        <label htmlFor="notes" >Notes:</label>
         <input
+          className='notes'
           type="notes"
           id="notes"
           value={notes}
@@ -95,6 +96,7 @@ const ContactForm = ({ existingContact = {}, updateCallback }) => {
         />
       </div>
       <button type="submit">{updating ? "Update" : "Create"}</button>
+      
     </form>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactComponent as PlusSign } from '../images/PlusSign.svg';
 
-const ContactList = ({ contacts, updateCallback, setQuery, openCreateModal }) => {
+const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCreateModal }) => {
   // Function to delete a contact
   const onDelete = async (id) => {
     try {
@@ -33,9 +33,12 @@ const ContactList = ({ contacts, updateCallback, setQuery, openCreateModal }) =>
           {contacts.map((contact) => (
             <tr key={contact.id}>
               <td>
-                <button className="contact-name-buttons">
+                <button className="contact-name-buttons" onClick={() => updateContact(contact)}>
                   {contact.firstName} {contact.lastName}
+                 
                 </button>
+                <button  className="UDbuttons" onClick={() => onDelete(contact.id)}>Delete</button>
+
               </td>
               <td>
             
