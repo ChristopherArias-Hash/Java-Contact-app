@@ -64,13 +64,13 @@ function ContactApp() {
         <div className="centered-contact">
           {/* ContactList component to display the list of contacts */}
           <ContactList 
-            contacts={filteredContacts} 
-            updateContact={openEditModal} 
-            updateCallback={onUpdate} 
-            setQuery={setQuery}
+           contacts={filteredContacts} 
+           updateContact={openEditModal} 
+           updateCallback={onUpdate} 
+           setQuery={setQuery} 
+           openCreateModal={openCreateModal}
           />
           {/* Button to open the modal for creating a new contact */}
-          <button className="submitButton" onClick={openCreateModal}>Create New Contact</button>
         </div>
       </div>
       {/* Modal for editing an existing contact */}

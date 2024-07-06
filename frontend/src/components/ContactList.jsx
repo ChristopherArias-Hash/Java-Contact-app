@@ -1,6 +1,7 @@
 import React from "react";
+import { ReactComponent as PlusSign } from '../images/PlusSign.svg';
 
-const ContactList = ({ contacts, updateCallback, setQuery }) => {
+const ContactList = ({ contacts, updateCallback, setQuery, openCreateModal }) => {
   // Function to delete a contact
   const onDelete = async (id) => {
     try {
@@ -25,14 +26,9 @@ const ContactList = ({ contacts, updateCallback, setQuery }) => {
       <h1 className="center-top-text">Welcome!</h1>
       <h2 className="center-top-text">Leave your contact info!</h2>
       <h2>Contacts</h2>
-      <input type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search contacts" />
+      <input className="search-create-section" type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search contacts" />
+      <PlusSign className = "plus-sign" onClick={openCreateModal}></PlusSign>
       <table>
-        <thead>
-          <tr>
-            
-          
-          </tr>
-        </thead>
         <tbody>
           {contacts.map((contact) => (
             <tr key={contact.id}>

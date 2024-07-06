@@ -131,3 +131,17 @@
   box-shadow: #2B2D42 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
+
+.search-create-section{
+  display: inline-block;
+}
+.plus-sign{
+  width: 50px;
+  height:30px;
+  margin-left:100px;
+}
+
+.plus-sign:active {
+  
+  transform: translate(2px, 2px);
+}
