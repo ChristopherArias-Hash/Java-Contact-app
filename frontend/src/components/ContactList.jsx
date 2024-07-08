@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState} from "react";
 import { ReactComponent as PlusSign } from '../images/PlusSign.svg';
+import DropDownContact from "./DropDownContact";
 
 const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCreateModal }) => {
   // Function to delete a contact
@@ -21,6 +22,8 @@ const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCr
     }
   };
 
+  const [open, setOpen] = useState(false)
+
   return (
     <div>
       <h1 className="center-top-text">Welcome!</h1>
@@ -33,11 +36,17 @@ const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCr
           {contacts.map((contact) => (
             <tr key={contact.id}>
               <td>
-                <button className="contact-name-buttons" onClick={() => updateContact(contact)}>
+              <div className = "dropdown-contianer">
+              <div className = "menu-trigger">
+                <button className="contact-name-buttons" onClick ={()=>{setOpen(!open)}}>
                   {contact.firstName} {contact.lastName}
-                 
                 </button>
-                <button  className="UDbuttons" onClick={() => onDelete(contact.id)}>Delete</button>
+                </div>
+                <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}>
+                <DropDownContact text = {"Edit"}  onClick={() => updateContact(contact)} />
+                <DropDownContact text = {"Delete"} onClick={() => onDelete(contact.id)} />
+                </div>
+                </div>
 
               </td>
               <td>

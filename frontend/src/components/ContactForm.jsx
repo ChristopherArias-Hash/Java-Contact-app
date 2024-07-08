@@ -96,7 +96,7 @@ const ContactForm = ({ existingContact = {}, updateCallback}) => {
         />
       </div>
       <button type="submit">{updating ? "Update" : "Create"}</button>
-      
+
     </form>
   );
 };

@@ -70,10 +70,8 @@ function ContactApp() {
            setQuery={setQuery} 
            openCreateModal={openCreateModal}
           />
-          {/* Button to open the modal for creating a new contact */}
         </div>
       </div>
-      {/* Modal for editing an existing contact */}
       {isModalOpen && (
         <div className="modal">
           <div className="modal-content">
