@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 import { ReactComponent as PlusSign } from '../images/PlusSign.svg';
-import DropDownContact from "./DropDownContact";
+import DropDownContact from "./ContactButtons";
 
 const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCreateModal }) => {
   // Function to delete a contact
@@ -22,7 +22,11 @@ const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCr
     }
   };
 
-  const [open, setOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState(null); // Initialize the state to null
+
+  const toggleDropdown = (id) => {
+    setOpenDropdown(openDropdown === id ? null : id); // Toggle the dropdown based on the clicked contact's id
+  };
 
   return (
     <div>
@@ -36,17 +40,17 @@ const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCr
           {contacts.map((contact) => (
             <tr key={contact.id}>
               <td>
-              <div className = "dropdown-contianer">
+           
               <div className = "menu-trigger">
-                <button className="contact-name-buttons" onClick ={()=>{setOpen(!open)}}>
-                  {contact.firstName} {contact.lastName}
-                </button>
+              <button className="contact-name-buttons" onClick={() => toggleDropdown(contact.id)}>
+                    {contact.firstName} {contact.lastName}
+                  </button>
                 </div>
-                <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}>
+                <div className={`dropdown-menu ${openDropdown === contact.id ? 'active' : 'inactive'}`}>
                 <DropDownContact text = {"Edit"}  onClick={() => updateContact(contact)} />
                 <DropDownContact text = {"Delete"} onClick={() => onDelete(contact.id)} />
                 </div>
-                </div>
+            
 
               </td>
               <td>

@@ -114,7 +114,10 @@
   touch-action: manipulation;
 }
 
-
+.UDbuttons-name-buttons:active {
+  box-shadow: #2B2D42 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
 .contact-name-buttons{
   margin-right:50px;
   background-color: #EDF2F4;
@@ -176,16 +179,7 @@
   
 }
 
-
-
-.dropdown-menu ul li:hover a{
-  color: rgb(212, 33, 9);
-  cursor: pointer;
-}
-
-
-
-.dropdownItem{
+.contact-buttons{
   display: flex;
   margin: 10px auto;
   margin-left:10px;
@@ -209,7 +203,7 @@
 }
 
 
-.dropdownItem:active {
+.contact-buttons:active {
   box-shadow: #2B2D42 2px 2px 0 0;
   transform: translate(2px, 2px);
 }
