@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Contact {
-    //Makes I'd automated generated
     @Id
     @GeneratedValue
     private Long id;
@@ -14,7 +13,7 @@ public class Contact {
     private String lastName;
     private String email;
     private String notes;
-    private String imageUrl;
+    private String profileImagePath;
 
     public Long getId() {
         return id;
@@ -56,11 +55,11 @@ public class Contact {
         this.notes = notes;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getProfileImagePath() {
+        return profileImagePath;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setProfileImagePath(String profileImagePath) {
+        this.profileImagePath = profileImagePath;
     }
 }
