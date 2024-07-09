@@ -2,26 +2,25 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ContactList from "../components/ContactList";
 import ContactForm from "../components/ContactForm";
+import ContactView from "../components/ContactView";
 import "./ContactApp.css";
 
 function ContactApp() {
   const [query, setQuery] = useState("");
   const [contacts, setContacts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isViewMode, setIsViewMode] = useState(false);
   const [currentContact, setCurrentContact] = useState({});
 
-  // Fetch contacts from the server when the component mounts
   useEffect(() => {
     loadContacts();
   }, []);
 
-  // Fetch contacts data from the server
   const loadContacts = async () => {
     const result = await axios.get("http://localhost:8080/contacts");
     setContacts(result.data);
   };
 
-  // Filter contacts based on the search query
   const getFilteredItems = (query, contacts) => {
     if (!query) {
       return contacts;
@@ -32,25 +31,29 @@ function ContactApp() {
     );
   };
 
-  // Close the modal and reset currentContact state
   const closeModal = () => {
     setIsModalOpen(false);
+    setIsViewMode(false);
     setCurrentContact({});
   };
 
-  // Open the modal for creating a new contact
   const openCreateModal = () => {
     if (!isModalOpen) setIsModalOpen(true);
   };
 
-  // Open the modal for editing an existing contact
   const openEditModal = (contact) => {
     if (isModalOpen) return;
     setCurrentContact(contact);
     setIsModalOpen(true);
   };
 
-  // Callback function to update contacts after editing
+  const openViewModal = (contact) => {
+    if (isModalOpen) return;
+    setCurrentContact(contact);
+    setIsViewMode(true);
+    setIsModalOpen(true);
+  };
+
   const onUpdate = () => {
     closeModal();
     loadContacts();
@@ -62,13 +65,13 @@ function ContactApp() {
     <>
       <div className="container">
         <div className="centered-contact">
-          {/* ContactList component to display the list of contacts */}
           <ContactList 
-           contacts={filteredContacts} 
-           updateContact={openEditModal} 
-           updateCallback={onUpdate} 
-           setQuery={setQuery} 
-           openCreateModal={openCreateModal}
+            contacts={filteredContacts} 
+            updateContact={openEditModal} 
+            updateCallback={onUpdate} 
+            setQuery={setQuery} 
+            openCreateModal={openCreateModal}
+            viewModal={openViewModal}
           />
         </div>
       </div>
@@ -76,7 +79,11 @@ function ContactApp() {
         <div className="modal">
           <div className="modal-content">
             <span className="close" onClick={closeModal}>&times;</span>
-            <ContactForm existingContact={currentContact} updateCallback={onUpdate} />
+            {isViewMode ? (
+              <ContactView contact={currentContact} closeModal={closeModal} />
+            ) : (
+              <ContactForm existingContact={currentContact} updateCallback={onUpdate} />
+            )}
           </div>
         </div>
       )}

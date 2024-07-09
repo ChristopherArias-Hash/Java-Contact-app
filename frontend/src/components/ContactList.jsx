@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ReactComponent as PlusSign } from '../images/PlusSign.svg';
 import DropDownContact from "./ContactButtons";
 
-const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCreateModal }) => {
+const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCreateModal, viewModal }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const toggleDropdown = (id) => {
@@ -41,7 +41,7 @@ const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCr
                   </button>
                 </div>
                 <div className={`dropdown-menu ${openDropdown === contact.id ? 'active' : ''}`}>
-                  <DropDownContact text={"View"} />
+                  <DropDownContact text={"View"}  onClick ={() => viewModal(contact)}/>
                   <DropDownContact text={"Edit"} onClick={() => updateContact(contact)} />
                   <DropDownContact text={"Delete"} onClick={() => onDelete(contact.id)} />
                 </div>

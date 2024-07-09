@@ -38,35 +38,6 @@
   text-align: center;
 }
 
-
-.submitButton {
-  background-color: #EDF2F4;
-  border: 2px solid #2B2D42;
-  border-radius: 30px;
-  box-shadow: #2B2D42 4px 4px 0 0;
-  color: #2B2D42;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 0 15px;
-  line-height: 25px;
-  width: 200px;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  
- 
-  
-}
-
-.submitButton:active {
-  box-shadow: #2B2D42 2px 2px 0 0;
-  transform: translate(2px, 2px);
-}
-
 .centered-contact {
   color: #2B2D42;
   justify-self: left;
@@ -77,7 +48,7 @@
   padding-left: 15px;
   margin-top: 50px;
   overflow-y: auto;
-
+  width:350px;
 }
   /* Optional: Style the scroll bar */
 .centered-contact::-webkit-scrollbar {
@@ -104,6 +75,9 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.contact-name-buttons:hover{
+  background-color:  #d3edf7;
 }
 .contact-name-buttons:active {
   box-shadow: #2B2D42 2px 2px 0 0;
