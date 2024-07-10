@@ -12,7 +12,7 @@ const ContactView = ({ contact, closeModal }) => {
         <div>
           <strong>Profile Image:</strong>
           <br />
-          <img src={`http://localhost:8080/${contact.profileImagePath}`} alt={`${contact.firstName} ${contact.lastName}`} />
+          <img className = "contact-profile-pictures "src={`http://localhost:8080/${contact.profileImagePath}`} alt={`${contact.firstName} ${contact.lastName}`} />
         </div>
       )}
       <button onClick={closeModal}>Close</button>

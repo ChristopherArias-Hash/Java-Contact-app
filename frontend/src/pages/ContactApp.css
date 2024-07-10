@@ -1,6 +1,4 @@
 
-
-
 .modal {
   position: fixed;
   z-index: 1;
@@ -39,6 +37,7 @@
 }
 
 .centered-contact {
+  display: grid;
   color: #2B2D42;
   justify-self: left;
   grid-row: 1 / 9; /* start from row 4 and span enough rows to accommodate expansion */
@@ -49,6 +48,7 @@
   margin-top: 50px;
   overflow-y: auto;
   width:350px;
+  
 }
   /* Optional: Style the scroll bar */
 .centered-contact::-webkit-scrollbar {
@@ -64,18 +64,26 @@
   background-color: #555;
 }
 
-.contact-name-buttons{
-  margin-right:50px;
+.contact-name-buttons {
   background-color: #EDF2F4;
   border: 2px solid #2B2D42;
   height: 50px;
   width: 300px;
   max-width: 400px;
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: 550;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  padding: 0 10px;
 }
+
+
+
 .contact-name-buttons:hover{
   background-color:  #d3edf7;
 }
@@ -84,6 +92,11 @@
   transform: translate(2px, 2px);
 }
 
+.contact-button-profile-pictures {
+  height: 35px;
+  width: 35px;
+  margin-bottom: 0; 
+}
 .search-create-section{
   display: inline-block;
   

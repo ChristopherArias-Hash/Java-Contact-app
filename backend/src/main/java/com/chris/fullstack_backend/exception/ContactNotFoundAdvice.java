@@ -13,7 +13,7 @@ public class ContactNotFoundAdvice {
     @ExceptionHandler(ContactNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, String> exceptionHandler(ContactNotFoundException exception) {
-        Map<String, String> errorMap = new HashMap<String, String>();
+        Map<String, String> errorMap = new HashMap<>();
         errorMap.put("errorMsg", exception.getMessage());
         return errorMap;
     }

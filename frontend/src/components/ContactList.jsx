@@ -13,13 +13,14 @@ const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCr
     try {
       const options = { method: "DELETE" };
       const response = await fetch(`http://localhost:8080/contact/${id}`, options);
-      if (response.status === 200) {
+      if (response.ok) {
         updateCallback();
       } else {
-        console.error("Failed to delete");
+        console.error(`Failed to delete contact with id ${id}`);
       }
     } catch (error) {
-      alert(error);
+      console.error("Error deleting contact:", error);
+      alert("An error occurred while deleting the contact. Please try again.");
     }
   };
 
@@ -28,28 +29,49 @@ const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCr
       <h1 className="center-top-text">Welcome!</h1>
       <h2 className="center-top-text">Leave your contact info!</h2>
       <h2>Contacts</h2>
-      <input className="search-create-section" type="text" onChange={(e) => setQuery(e.target.value)} placeholder="Search contacts" />
-      <PlusSign className="plus-sign" onClick={openCreateModal}></PlusSign>
-      <table>
-        <tbody>
-          {contacts.map((contact) => (
-            <tr key={contact.id}>
-              <td>
-                <div className="menu-trigger">
-                  <button className="contact-name-buttons" onClick={() => toggleDropdown(contact.id)}>
-                    {contact.firstName} {contact.lastName}
-                  </button>
-                </div>
-                <div className={`dropdown-menu ${openDropdown === contact.id ? 'active' : ''}`}>
-                  <DropDownContact text={"View"}  onClick ={() => viewModal(contact)}/>
-                  <DropDownContact text={"Edit"} onClick={() => updateContact(contact)} />
-                  <DropDownContact text={"Delete"} onClick={() => onDelete(contact.id)} />
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <input
+        className="search-create-section"
+        type="text"
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search contacts"
+      />
+      <PlusSign className="plus-sign" onClick={openCreateModal} />
+      {contacts.length > 0 ? (
+        <table>
+          <tbody>
+            {contacts.map((contact) => (
+              <tr key={contact.id}>
+                <td>
+                  <div className="menu-trigger">
+                    <button
+                      className="contact-name-buttons"
+                      onClick={() => toggleDropdown(contact.id)}
+                    >
+                      {contact.firstName} {contact.lastName}
+                      {contact.profileImagePath && (
+                        <img
+                          className="contact-button-profile-pictures"
+                          src={`http://localhost:8080/${contact.profileImagePath}`}
+                          alt={`${contact.firstName} ${contact.lastName}`}
+                        />
+                      )}
+                    </button>
+                  </div>
+                  {openDropdown === contact.id && (
+                    <div className="dropdown-menu active">
+                      <DropDownContact text="View" onClick={() => viewModal(contact)} />
+                      <DropDownContact text="Edit" onClick={() => updateContact(contact)} />
+                      <DropDownContact text="Delete" onClick={() => onDelete(contact.id)} />
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No contacts available. Please add a new contact.</p>
+      )}
     </div>
   );
 };
