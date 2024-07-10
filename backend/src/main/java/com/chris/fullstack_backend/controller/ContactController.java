@@ -60,7 +60,7 @@ public class ContactController {
                                  @RequestParam("lastName") String lastName,
                                  @RequestParam("email") String email,
                                  @RequestParam("notes") String notes,
-                                 @RequestParam("profileImage") MultipartFile profileImage,
+                                 @RequestParam(value = "profileImage", required = false) MultipartFile profileImage,
                                  @PathVariable Long id) throws IOException {
         return contactRepository.findById(id)
                 .map(contact -> {
@@ -68,7 +68,7 @@ public class ContactController {
                     contact.setLastName(lastName);
                     contact.setEmail(email);
                     contact.setNotes(notes);
-                    if (!profileImage.isEmpty()) {
+                    if (profileImage != null && !profileImage.isEmpty()) {
                         try {
                             contact.setProfileImagePath(saveImage(profileImage));
                         } catch (IOException e) {
@@ -78,6 +78,7 @@ public class ContactController {
                     return contactRepository.save(contact);
                 }).orElseThrow(() -> new ContactNotFoundException(id));
     }
+
 
     @DeleteMapping("/contact/{id}")
     public String deleteContact(@PathVariable Long id) {
