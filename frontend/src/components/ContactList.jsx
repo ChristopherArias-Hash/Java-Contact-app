@@ -28,14 +28,17 @@ const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCr
     <div>
       <h1 className="center-top-text">Welcome!</h1>
       <h2 className="center-top-text">Leave your contact info!</h2>
-      <h2>Contacts</h2>
+      <h2 className="center-top-text-contacts">Contacts</h2>
+      <div className="search-and-plus">
       <input
         className="search-create-section"
         type="text"
+        color = "red"
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search contacts"
       />
       <PlusSign className="plus-sign" onClick={openCreateModal} />
+      </div>
       {contacts.length > 0 ? (
         <table>
           <tbody>
@@ -70,7 +73,7 @@ const ContactList = ({ contacts, updateContact, updateCallback, setQuery, openCr
           </tbody>
         </table>
       ) : (
-        <p>No contacts available. Please add a new contact.</p>
+        <p className ="no-contacts-text">No contacts available. Please add a new contact.</p>
       )}
     </div>
   );

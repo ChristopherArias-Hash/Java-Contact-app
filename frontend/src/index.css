@@ -9,10 +9,9 @@ input, button, label {
 .container {
   display: grid;
   grid-template-rows: repeat(20,100px); /* Set each row to 50px */
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   justify-items: start;
   height: 100vh;
-  overflow: hidden; /* Prevent scrolling of the entire page */
 
   
 }
