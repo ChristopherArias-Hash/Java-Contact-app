@@ -3,7 +3,10 @@ import React from "react";
 const ContactButtons = (props) => {
   return (
     <>
-        <button className = "contact-buttons" onClick={props.onClick}>{props.text}</button>
+        {/* Button element with dynamic text and click event handler */}
+        <button className="contact-buttons" onClick={props.onClick}>
+          {props.text}
+        </button>
     </>
   );
 };

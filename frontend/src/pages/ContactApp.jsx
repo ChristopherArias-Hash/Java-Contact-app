@@ -6,24 +6,28 @@ import ContactView from "../components/ContactView";
 import "./ContactApp.css";
 
 function ContactApp() {
-  const [query, setQuery] = useState("");
-  const [contacts, setContacts] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isViewMode, setIsViewMode] = useState(false);
-  const [currentContact, setCurrentContact] = useState({});
+  // State variables
+  const [query, setQuery] = useState(""); // Search query for filtering contacts
+  const [contacts, setContacts] = useState([]); // List of contacts
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal open/close state
+  const [isViewMode, setIsViewMode] = useState(false); // Determines if the modal is in view mode
+  const [currentContact, setCurrentContact] = useState({}); // The currently selected contact
 
+  // Load contacts on component mount
   useEffect(() => {
     loadContacts();
   }, []);
 
+  // Fetch contacts from the server
   const loadContacts = async () => {
     const result = await axios.get("http://localhost:8080/contacts");
     setContacts(result.data);
   };
 
+  // Filter contacts based on the search query
   const getFilteredItems = (query, contacts) => {
     if (!query) {
-      return contacts;
+      return contacts; // Return all contacts if no query
     }
     return contacts.filter(contact => 
       contact.firstName.toLowerCase().includes(query.toLowerCase()) ||
@@ -31,22 +35,26 @@ function ContactApp() {
     );
   };
 
+  // Close the modal and reset states
   const closeModal = () => {
     setIsModalOpen(false);
     setIsViewMode(false);
     setCurrentContact({});
   };
 
+  // Open the create contact modal
   const openCreateModal = () => {
     if (!isModalOpen) setIsModalOpen(true);
   };
 
+  // Open the edit contact modal
   const openEditModal = (contact) => {
     if (isModalOpen) return;
     setCurrentContact(contact);
     setIsModalOpen(true);
   };
 
+  // Open the view contact modal
   const openViewModal = (contact) => {
     if (isModalOpen) return;
     setCurrentContact(contact);
@@ -54,11 +62,13 @@ function ContactApp() {
     setIsModalOpen(true);
   };
 
+  // Callback to update contact list and close the modal
   const onUpdate = () => {
     closeModal();
     loadContacts();
   };
 
+  // Get filtered contacts based on the search query
   const filteredContacts = getFilteredItems(query, contacts);
 
   return (
