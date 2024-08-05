@@ -1,4 +1,3 @@
-Sure, here's the refined version for your contact manager project:
 
 ---
 
