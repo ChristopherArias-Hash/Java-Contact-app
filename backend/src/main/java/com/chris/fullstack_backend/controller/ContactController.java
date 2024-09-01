@@ -15,7 +15,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:5173") // Allow CORS requests from the specified origin
+@CrossOrigin("http://localhost:5173/ContactApp") // Allow CORS requests from the specified origin
 public class ContactController {
 
     @Autowired
