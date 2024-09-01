@@ -27,5 +27,5 @@ jobs:
           DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
           DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
         run: |
-          # Deployment script goes here
+          # Deployment script goes here!
           echo "Deploying application with DATABASE_URL=${DATABASE_URL}"
